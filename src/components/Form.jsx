@@ -1,34 +1,25 @@
-import React, { Component } from 'react'
+import React from "react";
 
-class Form extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {value: ''};
+class Form extends React.Component {
+    state = {
+        user: '',
+        temperature: '', 
+        waterTimeIn: '',
+        waterTimeOut: '',
+        additionalComments: ''
+    }
+    render(){
+        return (
+            <form>
+                <input placeholder='user' value= {this.state.user} onChange={e => this.setState({ user : e.target.value})} />
+                <input placeholder='temperature' value= {this.state.temperature}  onChange={e => this.setState({ temperature : e.target.value})} />
+                <input placeholder='Time Starting Water' value= {this.state.waterTimeIn}  onChange={e => this.setState({ waterTimeIn : e.target.value})} />
+                <input placeholder='Time I Turned Off Water' value= {this.state.waterTimeOut}  onChange={e => this.setState({ waterTimeOut : e.target.value})} />
+                <input placeholder='Any Additional Comments' value= {this.state.additionalComments}  onChange={e => this.setState({ additionalComments : e.target.value})} />
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+            </form>
+        )
+        }
+    }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
-}
-
-export default Form; 
+export default Form
